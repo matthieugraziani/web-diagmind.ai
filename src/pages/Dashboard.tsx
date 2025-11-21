@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Brain, LogOut, MessageSquare, User } from 'lucide-react';
+import { Brain, LogOut, MessageSquare, User, Scan } from 'lucide-react';
 import { MedicalChatbot } from '@/components/MedicalChatbot';
+import { ImageDetection } from '@/components/ImageDetection';
 import { supabase } from '@/integrations/supabase/client';
 
 export default function Dashboard() {
@@ -12,6 +13,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<any>(null);
   const [showChat, setShowChat] = useState(false);
+  const [showDetection, setShowDetection] = useState(false);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -111,11 +113,19 @@ export default function Dashboard() {
             <div className="space-y-3">
               <Button 
                 className="w-full justify-start" 
+                variant="medical"
+                onClick={() => setShowDetection(true)}
+              >
+                <Scan className="h-4 w-4 mr-2" />
+                Détection IA - Imagerie
+              </Button>
+              <Button 
+                className="w-full justify-start" 
                 variant={showChat ? "default" : "outline"}
                 onClick={() => setShowChat(true)}
               >
                 <MessageSquare className="h-4 w-4 mr-2" />
-                Ouvrir le chatbot IA
+                Chatbot Médical IA
               </Button>
               <Button className="w-full justify-start" variant="outline">
                 <Brain className="h-4 w-4 mr-2" />
@@ -131,6 +141,9 @@ export default function Dashboard() {
             <MedicalChatbot onClose={() => setShowChat(false)} />
           </div>
         )}
+
+        {/* Detection Section */}
+        {showDetection && <ImageDetection onClose={() => setShowDetection(false)} />}
       </main>
     </div>
   );
