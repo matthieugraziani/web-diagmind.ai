@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Cpu, Database, Lock, Microscope, Layers, Workflow, Shield, Award } from "lucide-react";
 import aiBackground from "@/assets/ai-medical-bg.jpg";
+import { RGPDBadge, ISO27001Badge, CEBadgeSimple } from "@/components/CertificationBadges";
 
 const TechnologySection = () => {
   const technologies = [
@@ -139,10 +140,8 @@ const TechnologySection = () => {
             {/* RGPD Card */}
             <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
               <CardHeader className="pb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                  </div>
+                <div className="flex items-center space-x-4">
+                  <RGPDBadge className="w-14 h-14 flex-shrink-0" />
                   <div>
                     <CardTitle className="text-lg font-semibold text-foreground">RGPD</CardTitle>
                     <Badge variant="secondary" className="text-xs mt-1">Règlement Européen</Badge>
@@ -177,10 +176,8 @@ const TechnologySection = () => {
             {/* ISO 27001 Card */}
             <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '750ms', animationFillMode: 'forwards' }}>
               <CardHeader className="pb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 rounded-xl flex items-center justify-center">
-                    <Award className="h-6 w-6 text-green-600 dark:text-green-400" />
-                  </div>
+                <div className="flex items-center space-x-4">
+                  <ISO27001Badge className="w-14 h-14 flex-shrink-0" />
                   <div>
                     <CardTitle className="text-lg font-semibold text-foreground">ISO 27001</CardTitle>
                     <Badge variant="secondary" className="text-xs mt-1">Norme Internationale</Badge>
@@ -215,10 +212,8 @@ const TechnologySection = () => {
             {/* CE Marking Card */}
             <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
               <CardHeader className="pb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 rounded-xl flex items-center justify-center">
-                    <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">CE</span>
-                  </div>
+                <div className="flex items-center space-x-4">
+                  <CEBadgeSimple className="w-14 h-14 flex-shrink-0" />
                   <div>
                     <CardTitle className="text-lg font-semibold text-foreground">Marquage CE</CardTitle>
                     <Badge variant="secondary" className="text-xs mt-1">Dispositif Médical</Badge>
