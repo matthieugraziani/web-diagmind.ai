@@ -124,21 +124,131 @@ const TechnologySection = () => {
           </CardContent>
         </Card>
 
-        {/* Security & Compliance */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-8 bg-background p-6 rounded-xl shadow-card-soft border border-border">
-            <div className="flex items-center space-x-2">
-              <Lock className="h-5 w-5 text-trust" />
-              <span className="text-sm font-medium text-foreground">Chiffrement AES-256</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Shield className="h-5 w-5 text-trust" />
-              <span className="text-sm font-medium text-foreground">Conforme RGPD</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Award className="h-5 w-5 text-trust" />
-              <span className="text-sm font-medium text-foreground">Certification ISO 27001</span>
-            </div>
+        {/* Security & Compliance - Detailed Cards */}
+        <div className="mt-16 space-y-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-2">
+              Conformité & Certifications
+            </h3>
+            <p className="text-muted-foreground">
+              Notre plateforme respecte les normes les plus strictes en matière de sécurité et de protection des données médicales
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* RGPD Card */}
+            <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg font-semibold text-foreground">RGPD</CardTitle>
+                    <Badge variant="secondary" className="text-xs mt-1">Règlement Européen</Badge>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Le <strong>Règlement Général sur la Protection des Données</strong> garantit la protection des données personnelles de santé de nos utilisateurs.
+                </p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Consentement explicite pour le traitement des données</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Droit à l'effacement et à la portabilité</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Anonymisation des données d'analyse</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Hébergement en Europe (HDS agréé)</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* ISO 27001 Card */}
+            <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '750ms', animationFillMode: 'forwards' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 rounded-xl flex items-center justify-center">
+                    <Award className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg font-semibold text-foreground">ISO 27001</CardTitle>
+                    <Badge variant="secondary" className="text-xs mt-1">Norme Internationale</Badge>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  La certification <strong>ISO 27001</strong> atteste de notre système de management de la sécurité de l'information (SMSI) conforme aux standards internationaux.
+                </p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Gestion des risques de sécurité</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Chiffrement AES-256 bout en bout</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Audits de sécurité réguliers</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Plan de continuité d'activité</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* CE Marking Card */}
+            <Card className="bg-background/80 backdrop-blur-sm border-border hover:shadow-medical transition-all duration-300 opacity-0 animate-fade-in" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 rounded-xl flex items-center justify-center">
+                    <span className="text-purple-600 dark:text-purple-400 font-bold text-lg">CE</span>
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg font-semibold text-foreground">Marquage CE</CardTitle>
+                    <Badge variant="secondary" className="text-xs mt-1">Dispositif Médical</Badge>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Le <strong>marquage CE</strong> certifie que notre logiciel est conforme aux exigences de la réglementation européenne sur les dispositifs médicaux (MDR 2017/745).
+                </p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Classification comme dispositif médical de classe IIa</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Évaluation clinique documentée</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Surveillance post-commercialisation</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-trust mt-0.5">✓</span>
+                    <span>Organisme notifié européen</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
