@@ -7,24 +7,27 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Watermark from "@/components/Watermark";
 import CookieConsent from "@/components/CookieConsent";
+import { CookieConsentProvider } from "@/hooks/useCookieConsent";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative">
-      <Watermark />
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <HeroSection />
-          <HowItWorksSection />
-          <AdvantagesSection />
-          <TechnologySection />
-          <ContactSection />
-        </main>
-        <Footer />
+    <CookieConsentProvider>
+      <div className="min-h-screen relative">
+        <Watermark />
+        <div className="relative z-10">
+          <Header />
+          <main>
+            <HeroSection />
+            <HowItWorksSection />
+            <AdvantagesSection />
+            <TechnologySection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </div>
+        <CookieConsent />
       </div>
-      <CookieConsent />
-    </div>
+    </CookieConsentProvider>
   );
 };
 
