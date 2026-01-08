@@ -2,18 +2,21 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Cookie, X, Settings, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const CookieConsent = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const { isVisible, closeCookieSettings, openCookieSettings } = useCookieConsent();
   const [showDetails, setShowDetails] = useState(false);
+  const [hasConsent, setHasConsent] = useState(true);
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");
     if (!consent) {
-      const timer = setTimeout(() => setIsVisible(true), 1000);
+      setHasConsent(false);
+      const timer = setTimeout(() => openCookieSettings(), 1000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [openCookieSettings]);
 
   const acceptAll = () => {
     localStorage.setItem("cookie-consent", JSON.stringify({
@@ -22,7 +25,8 @@ const CookieConsent = () => {
       marketing: true,
       timestamp: new Date().toISOString()
     }));
-    setIsVisible(false);
+    setHasConsent(true);
+    closeCookieSettings();
   };
 
   const acceptNecessary = () => {
@@ -32,7 +36,8 @@ const CookieConsent = () => {
       marketing: false,
       timestamp: new Date().toISOString()
     }));
-    setIsVisible(false);
+    setHasConsent(true);
+    closeCookieSettings();
   };
 
   if (!isVisible) return null;
@@ -51,15 +56,17 @@ const CookieConsent = () => {
                 <div>
                   <h3 className="font-semibold text-foreground text-lg flex items-center gap-2">
                     <Shield className="w-5 h-5 text-primary" />
-                    Respect de votre vie privée
+                    {hasConsent ? "Gérer vos préférences cookies" : "Respect de votre vie privée"}
                   </h3>
                   <p className="text-muted-foreground text-sm mt-1">
-                    Nous utilisons des cookies pour améliorer votre expérience. Conformément au RGPD, 
-                    vous pouvez choisir les cookies que vous acceptez.
+                    {hasConsent 
+                      ? "Modifiez vos préférences de cookies à tout moment."
+                      : "Nous utilisons des cookies pour améliorer votre expérience. Conformément au RGPD, vous pouvez choisir les cookies que vous acceptez."
+                    }
                   </p>
                 </div>
                 <button 
-                  onClick={acceptNecessary}
+                  onClick={closeCookieSettings}
                   className="text-muted-foreground hover:text-foreground transition-colors shrink-0"
                   aria-label="Fermer"
                 >

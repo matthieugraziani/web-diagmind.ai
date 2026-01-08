@@ -1,6 +1,9 @@
-import { Brain, Mail, Linkedin, Twitter } from "lucide-react";
+import { Brain, Mail, Linkedin, Twitter, Cookie } from "lucide-react";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const Footer = () => {
+  const { openCookieSettings } = useCookieConsent();
+
   return (
     <footer className="bg-foreground text-background py-12">
       <div className="container mx-auto px-6">
@@ -68,10 +71,17 @@ const Footer = () => {
           <p className="text-background/70 text-sm">
             © 2024 DiagMind.AI. Tous droits réservés.
           </p>
-          <div className="flex space-x-6 text-sm text-background/70 mt-4 md:mt-0">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-background/70 mt-4 md:mt-0">
             <a href="/mentions-legales" className="hover:text-background transition-colors">Mentions Légales</a>
             <a href="/politique-confidentialite" className="hover:text-background transition-colors">Politique de Confidentialité</a>
             <a href="/conditions-utilisation" className="hover:text-background transition-colors">Conditions d'Utilisation</a>
+            <button 
+              onClick={openCookieSettings}
+              className="hover:text-background transition-colors flex items-center gap-1"
+            >
+              <Cookie className="h-3.5 w-3.5" />
+              Gérer les cookies
+            </button>
           </div>
         </div>
       </div>
