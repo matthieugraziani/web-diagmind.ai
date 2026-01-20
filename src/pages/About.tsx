@@ -44,7 +44,7 @@ const About = () => {
 
   const milestones = [
     { year: "2026", event: "CHU pilote, Marquage CE et Validation HAS" },
-    { year: "2027", event: "Déploiement dans tous les CHU de France" },
+    { year: "2027", event: "Déploiement national et remboursement Sécurité Sociale" },
     { year: "2028", event: "Extension à d'autres pathologies cérébrales" },
     { year: "2030", event: "Expansion internationale" }
   ];
