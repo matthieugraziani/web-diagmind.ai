@@ -218,8 +218,11 @@ const TechnologySection = () => {
               Conformité & Certifications
             </h3>
             <p className="text-muted-foreground">
-              Notre plateforme respecte les normes les plus strictes en matière de sécurité et de protection des données médicales
+              Notre plateforme vise les normes les plus strictes en matière de sécurité et de protection des données médicales
             </p>
+            <Badge variant="outline" className="mt-3 text-amber-600 border-amber-400 bg-amber-50">
+              🎯 Certifications en cours d'obtention
+            </Badge>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -234,13 +237,13 @@ const TechnologySection = () => {
                     <RGPDBadge className="w-14 h-14 flex-shrink-0 transition-transform duration-500 group-hover:rotate-[360deg]" />
                     <div>
                       <CardTitle className="text-lg font-semibold text-foreground">RGPD</CardTitle>
-                      <Badge variant="secondary" className="text-xs mt-1">Règlement Européen</Badge>
+                      <Badge variant="outline" className="text-xs mt-1 text-amber-600 border-amber-400">Objectif 2026</Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Le <strong>Règlement Général sur la Protection des Données</strong> garantit la protection des données personnelles de santé de nos utilisateurs.
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">
+                    Le <strong>Règlement Général sur la Protection des Données</strong> garantira la protection des données personnelles de santé de nos utilisateurs.
                   </p>
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li className="flex items-start space-x-2">
@@ -275,13 +278,13 @@ const TechnologySection = () => {
                     <ISO27001Badge className="w-14 h-14 flex-shrink-0 transition-transform duration-500 group-hover:rotate-[360deg]" />
                     <div>
                       <CardTitle className="text-lg font-semibold text-foreground">ISO 27001</CardTitle>
-                      <Badge variant="secondary" className="text-xs mt-1">Norme Internationale</Badge>
+                      <Badge variant="outline" className="text-xs mt-1 text-amber-600 border-amber-400">Objectif 2026</Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    La certification <strong>ISO 27001</strong> atteste de notre système de management de la sécurité de l'information (SMSI) conforme aux standards internationaux.
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">
+                    La certification <strong>ISO 27001</strong> attestera de notre système de management de la sécurité de l'information (SMSI) conforme aux standards internationaux.
                   </p>
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li className="flex items-start space-x-2">
@@ -316,13 +319,13 @@ const TechnologySection = () => {
                     <CEBadgeSimple className="w-14 h-14 flex-shrink-0 transition-transform duration-500 group-hover:rotate-[360deg]" />
                     <div>
                       <CardTitle className="text-lg font-semibold text-foreground">Marquage CE</CardTitle>
-                      <Badge variant="secondary" className="text-xs mt-1">Dispositif Médical</Badge>
+                      <Badge variant="outline" className="text-xs mt-1 text-amber-600 border-amber-400">Objectif 2026</Badge>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Le <strong>marquage CE</strong> certifie que notre logiciel est conforme aux exigences de la réglementation européenne sur les dispositifs médicaux (MDR 2017/745).
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">
+                    Le <strong>marquage CE</strong> certifiera que notre logiciel est conforme aux exigences de la réglementation européenne sur les dispositifs médicaux (MDR 2017/745).
                   </p>
                   <ul className="text-xs text-muted-foreground space-y-1">
                     <li className="flex items-start space-x-2">
