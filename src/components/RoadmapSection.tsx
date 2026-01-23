@@ -32,7 +32,7 @@ const RoadmapSection = () => {
         { q: "Q3", label: "Validation HAS", active: true },
         { q: "Q4", label: "Certification ISO 27001", active: true }
       ],
-      milestones: ["500 patients", "Classe IIa", "RGPD complet"]
+      milestones: ["500 patients", "Classe IIa", "10 recrutements"]
     },
     {
       year: "2027",
@@ -48,7 +48,7 @@ const RoadmapSection = () => {
         { q: "Q3", label: "Formation praticiens", active: true },
         { q: "Q4", label: "32 CHU opérationnels", active: true }
       ],
-      milestones: ["2000+ médecins", "Remboursement", "Intégration SIH"]
+      milestones: ["25 recrutements", "Remboursement", "Intégration SIH"]
     },
     {
       year: "2028",
@@ -64,7 +64,7 @@ const RoadmapSection = () => {
         { q: "Q3", label: "Sclérose en plaques", active: true },
         { q: "Q4", label: "Suivi longitudinal", active: true }
       ],
-      milestones: ["4 pathologies", "50 centres R&D", "IA multimodale"]
+      milestones: ["4 pathologies", "50 recrutements", "IA multimodale"]
     },
     {
       year: "2030",
@@ -80,7 +80,7 @@ const RoadmapSection = () => {
         { q: "Q3", label: "Asie-Pacifique", active: true },
         { q: "Q4", label: "Centre R&D Singapour", active: true }
       ],
-      milestones: ["1M+ examens/an", "20+ pays", "Standard mondial"]
+      milestones: ["100+ recrutements", "20+ pays", "Standard mondial"]
     }
   ];
 
