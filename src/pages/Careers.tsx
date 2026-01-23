@@ -53,7 +53,7 @@ const Careers = () => {
       id: 1,
       title: "Ingénieur Machine Learning",
       department: "R&D IA",
-      location: "Lyon, France",
+      location: "Toulon, France",
       type: "CDI",
       experience: "3-5 ans",
       salary: "55-70k€",
@@ -77,7 +77,7 @@ const Careers = () => {
       id: 2,
       title: "Développeur Full-Stack Senior",
       department: "Ingénierie",
-      location: "Lyon ou Remote",
+      location: "Toulon ou Remote",
       type: "CDI",
       experience: "5+ ans",
       salary: "50-65k€",
@@ -101,7 +101,7 @@ const Careers = () => {
       id: 3,
       title: "Responsable Affaires Réglementaires",
       department: "Qualité & Réglementation",
-      location: "Lyon, France",
+      location: "Toulon, France",
       type: "CDI",
       experience: "5-8 ans",
       salary: "60-80k€",
@@ -125,7 +125,7 @@ const Careers = () => {
       id: 4,
       title: "Médecin Conseil - Neurologie",
       department: "Médical",
-      location: "Lyon, France",
+      location: "Toulon, France",
       type: "CDI ou Temps partiel",
       experience: "10+ ans",
       salary: "Sur profil",
@@ -149,7 +149,7 @@ const Careers = () => {
       id: 5,
       title: "Data Engineer",
       department: "Data",
-      location: "Lyon ou Remote",
+      location: "Toulon ou Remote",
       type: "CDI",
       experience: "2-4 ans",
       salary: "45-55k€",
@@ -173,7 +173,7 @@ const Careers = () => {
       id: 6,
       title: "Stagiaire Recherche IA",
       department: "R&D IA",
-      location: "Lyon, France",
+      location: "Toulon, France",
       type: "Stage 6 mois",
       experience: "Bac+5",
       salary: "Gratification légale",
@@ -209,7 +209,7 @@ const Careers = () => {
     {
       icon: Coffee,
       title: "Bureaux modernes",
-      description: "Espaces de travail inspirants à Lyon Part-Dieu",
+      description: "Espaces de travail inspirants à Toulon",
     },
     {
       icon: TreePine,
@@ -293,7 +293,7 @@ const Careers = () => {
               </Badge>
               <Badge variant="outline" className="px-3 py-1.5">
                 <MapPin className="w-4 h-4 mr-2" />
-                Lyon & Remote
+                Toulon & Remote
               </Badge>
               <Badge variant="outline" className="px-3 py-1.5">
                 <Rocket className="w-4 h-4 mr-2" />
