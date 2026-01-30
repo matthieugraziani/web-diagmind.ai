@@ -10,8 +10,8 @@ const AdvantagesSection = () => {
   const advantages = [
     {
       icon: Zap,
-      title: "Vitesse d'Analyse",
-      description: "Analyse complète en moins de 30 secondes contre plusieurs heures traditionnellement",
+      title: "6x Plus Rapide",
+      description: "Réduisez le temps de bilan de 18 minutes à seulement 3 minutes par cliché, multipliant votre capacité de diagnostic",
       color: "text-accent"
     },
     {
@@ -21,22 +21,22 @@ const AdvantagesSection = () => {
       color: "text-primary" 
     },
     {
+      icon: Users,
+      title: "Réponse à la Désertification",
+      description: "Palliez au manque de radiologues dans les zones sous-dotées et offrez un diagnostic de qualité partout",
+      color: "text-accent"
+    },
+    {
+      icon: Clock,
+      title: "Population Vieillissante",
+      description: "Absorbez l'augmentation exponentielle des examens liée au vieillissement démographique sans surcharger vos équipes",
+      color: "text-primary"
+    },
+    {
       icon: Shield,
       title: "Sécurité & Conformité",
       description: "Conforme RGPD et certifications médicales. Données chiffrées et sécurisées",
       color: "text-trust"
-    },
-    {
-      icon: Clock,
-      title: "Disponibilité 24/7",
-      description: "Service accessible en permanence pour vos urgences et analyses critiques",
-      color: "text-primary"
-    },
-    {
-      icon: Users,
-      title: "Support Médical",
-      description: "Aide à la décision pour les radiologues et amélioration du workflow médical",
-      color: "text-accent"
     },
     {
       icon: Award,
@@ -157,16 +157,16 @@ const AdvantagesSection = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary-foreground">18→3 min</div>
+              <div className="text-primary-foreground/80 text-sm">Par cliché analysé</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary-foreground">6x</div>
+              <div className="text-primary-foreground/80 text-sm">Plus de patients traités</div>
+            </div>
+            <div className="space-y-2">
               <div className="text-3xl font-bold text-primary-foreground">95%</div>
               <div className="text-primary-foreground/80 text-sm">Précision diagnostique</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary-foreground">30s</div>
-              <div className="text-primary-foreground/80 text-sm">Temps d'analyse</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary-foreground">100k+</div>
-              <div className="text-primary-foreground/80 text-sm">Images analysées</div>
             </div>
             <div className="space-y-2">
               <div className="text-3xl font-bold text-primary-foreground">24/7</div>
