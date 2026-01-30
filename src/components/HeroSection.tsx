@@ -100,16 +100,16 @@ const HeroSection = () => {
               className="grid grid-cols-3 gap-6"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">95%</div>
-                <div className="text-sm text-muted-foreground">Précision</div>
+                <div className="text-2xl font-bold text-primary">18→3 min</div>
+                <div className="text-sm text-muted-foreground">Par cliché</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">3x</div>
+                <div className="text-2xl font-bold text-primary">6x</div>
                 <div className="text-sm text-muted-foreground">Plus rapide</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">24/7</div>
-                <div className="text-sm text-muted-foreground">Disponible</div>
+                <div className="text-2xl font-bold text-primary">95%</div>
+                <div className="text-sm text-muted-foreground">Précision</div>
               </div>
             </motion.div>
 
