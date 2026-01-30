@@ -88,7 +88,7 @@ const About = () => {
       title: "Phase Pilote & Certifications",
       event: "CHU pilote, Marquage CE et Validation HAS",
       details: [
-        "Lancement de l'étude pilote au CHU de Lyon avec 500 patients",
+        "Lancement de l'étude pilote au CHU de Toulon avec 500 patients",
         "Obtention du marquage CE classe IIa (dispositif médical)",
         "Validation par la Haute Autorité de Santé (HAS)",
         "Certification ISO 27001 et conformité RGPD complète",
@@ -139,7 +139,7 @@ const About = () => {
 
   const partners = [
     "AP-HP Paris",
-    "CHU de Lyon",
+    "CHU de Toulon",
     "Institut Curie",
     "CNRS",
     "INSERM",
