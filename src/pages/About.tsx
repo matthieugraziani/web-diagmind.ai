@@ -6,6 +6,7 @@ import Watermark from "@/components/Watermark";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Target, Lightbulb, Award, Building2, Handshake, CheckCircle2, Clock, Rocket } from "lucide-react";
+import matthieuPhoto from "@/assets/team-matthieu-graziani.jpg";
 
 
 
@@ -274,11 +275,15 @@ const About = () => {
                   <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20 hover:shadow-medical transition-all duration-300">
                     <CardHeader className="text-center pb-2">
                       <motion.div 
-                        className="w-32 h-32 rounded-full mx-auto mb-4 bg-gradient-to-br from-primary to-accent flex items-center justify-center border-4 border-primary/20 shadow-medical"
+                        className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-primary/20 shadow-medical"
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <span className="text-4xl font-bold text-white">MG</span>
+                        <img 
+                          src={matthieuPhoto} 
+                          alt="Matthieu Graziani - Fondateur de DiagMind.AI" 
+                          className="w-full h-full object-cover"
+                        />
                       </motion.div>
                       <Badge variant="default" className="mx-auto mb-2">Fondateur</Badge>
                       <CardTitle className="text-2xl">{founder.name}</CardTitle>
