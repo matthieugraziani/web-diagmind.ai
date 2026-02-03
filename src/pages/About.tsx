@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Watermark from "@/components/Watermark";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Target, Lightbulb, Award, Building2, Handshake, CheckCircle2, Clock, Rocket } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Target, Lightbulb, Award, Building2, Handshake, CheckCircle2, Clock, Rocket, ArrowRight } from "lucide-react";
 import matthieuPhoto from "@/assets/team-matthieu-graziani.jpg";
 
 
@@ -306,7 +308,13 @@ const About = () => {
               {/* Upcoming Team */}
               <motion.div className="text-center mb-8" variants={headerVariants}>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Équipe à venir</h3>
-                <p className="text-sm text-muted-foreground">Nous recrutons activement pour constituer notre équipe de choc</p>
+                <p className="text-sm text-muted-foreground mb-4">Nous recrutons activement pour constituer notre équipe de choc</p>
+                <Button asChild variant="default" size="lg" className="group">
+                  <Link to="/carrieres">
+                    Voir toutes nos offres
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
               </motion.div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
