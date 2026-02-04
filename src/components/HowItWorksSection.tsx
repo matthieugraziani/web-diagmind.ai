@@ -1,38 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Upload, Brain, CheckCircle, FileText } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Monitor, Zap, CheckCircle2, Timer, Activity, Brain, FileText } from "lucide-react";
+import pacsInterfaceMockup from "@/assets/pacs-interface-mockup.jpg";
 
 const HowItWorksSection = () => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const steps = [
-    {
-      icon: Upload,
-      title: "Upload de l'Imagerie",
-      description: "Importez vos images médicales (IRM, Scanner) de manière sécurisée dans notre plateforme.",
-      step: "01"
-    },
-    {
-      icon: Brain,
-      title: "Analyse IA Avancée",
-      description: "Notre algorithme d'intelligence artificielle analyse l'imagerie en quelques secondes avec une précision de 95%.",
-      step: "02"
-    },
-    {
-      icon: CheckCircle,
-      title: "Détection & Évaluation",
-      description: "Le système identifie les anomalies potentielles et évalue le niveau de risque avec des marqueurs visuels.",
-      step: "03"
-    },
-    {
-      icon: FileText,
-      title: "Rapport Détaillé",
-      description: "Recevez un rapport complet avec les zones d'intérêt identifiées pour supporter votre diagnostic médical.",
-      step: "04"
-    }
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,19 +32,51 @@ const HowItWorksSection = () => {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.95 },
-    visible: (i: number) => ({
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.5,
-        delay: i * 0.1,
+        duration: 0.6,
         ease: "easeOut" as const,
       },
-    }),
+    },
   };
+
+  const storySteps = [
+    {
+      icon: Monitor,
+      number: "01",
+      title: "Intégration Transparente",
+      context: "CHU de Toulon, Service Radiologie",
+      description: "Dr. Martin ouvre une IRM cérébrale dans son viewer PACS habituel. DiagMind est déjà intégré — aucune action supplémentaire requise.",
+      highlight: "Zéro changement d'outil"
+    },
+    {
+      icon: Zap,
+      number: "02", 
+      title: "Analyse en Temps Réel",
+      context: "Pendant que le praticien consulte l'image",
+      description: "En arrière-plan, notre IA analyse l'imagerie en quelques secondes. Ce qui prenait 18 minutes d'analyse manuelle est réduit à 3 minutes.",
+      highlight: "6x plus rapide"
+    },
+    {
+      icon: CheckCircle2,
+      number: "03",
+      title: "Résultats Intégrés",
+      context: "Directement dans le rapport médical",
+      description: "Les résultats apparaissent automatiquement : score de risque, zones annotées, recommandations. Le Dr. Martin valide et finalise son diagnostic.",
+      highlight: "Intégration native"
+    }
+  ];
+
+  const impactStats = [
+    { icon: Timer, value: "6x", label: "Plus rapide" },
+    { icon: Activity, value: "-15 min", label: "Par analyse" },
+    { icon: Brain, value: "95%", label: "Précision" },
+    { icon: FileText, value: "0", label: "Changement d'outil" }
+  ];
 
   return (
     <motion.section 
@@ -81,68 +88,117 @@ const HowItWorksSection = () => {
       variants={containerVariants}
     >
       <div className="container mx-auto px-6">
+        {/* Header with PACS Mockup */}
         <motion.div 
-          className="text-center space-y-4 mb-16"
+          className="text-center space-y-4 mb-12"
           variants={headerVariants}
         >
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-            Comment Fonctionne{" "}
+            L'IA qui s'intègre à votre{" "}
             <span className="bg-gradient-hero bg-clip-text text-transparent">
-              DiagMind.AI
+              workflow existant
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Un processus simple et sécurisé en 4 étapes pour une analyse d'imagerie cérébrale de haute précision
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            DiagMind s'intègre directement dans les systèmes PACS des établissements de santé, 
+            révolutionnant le quotidien des radiologues sans bouleverser leurs habitudes.
           </p>
+          
+          {/* PACS Interface Mockup */}
+          <motion.div 
+            className="relative max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-border"
+            variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img 
+              src={pacsInterfaceMockup} 
+              alt="Interface PACS avec intégration DiagMind - analyse IRM cérébrale avec annotations IA" 
+              className="w-full h-auto"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
+                <Monitor className="w-3 h-3 mr-1" />
+                Interface PACS avec overlay DiagMind
+              </Badge>
+            </div>
+          </motion.div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => {
+        {/* Storytelling Timeline */}
+        <motion.div 
+          className="grid md:grid-cols-3 gap-8 mb-16"
+          variants={containerVariants}
+        >
+          {storySteps.map((step, index) => {
             const Icon = step.icon;
             return (
               <motion.div
                 key={index}
-                custom={index}
-                variants={cardVariants}
+                variants={itemVariants}
               >
-                <Card className="relative bg-background border-border hover:shadow-medical transition-all duration-300 hover:-translate-y-2 h-full">
-                  <CardContent className="p-6 text-center space-y-4">
-                    {/* Step Number */}
-                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-hero rounded-full flex items-center justify-center text-primary-foreground text-sm font-bold">
-                      {step.step}
-                    </div>
-
+                <Card className="relative bg-background border-border hover:shadow-medical transition-all duration-300 hover:-translate-y-2 h-full overflow-hidden">
+                  {/* Step Number */}
+                  <div className="absolute top-4 right-4 text-6xl font-bold text-muted/20">
+                    {step.number}
+                  </div>
+                  
+                  <CardContent className="p-6 space-y-4 relative z-10">
                     {/* Icon */}
-                    <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary-light to-accent-light rounded-2xl flex items-center justify-center">
-                      <Icon className="h-8 w-8 text-primary" />
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-light to-accent-light rounded-xl flex items-center justify-center">
+                      <Icon className="h-6 w-6 text-primary" />
                     </div>
-
-                    {/* Content */}
-                    <div className="space-y-2">
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
+                    
+                    {/* Context */}
+                    <p className="text-xs text-muted-foreground italic">
+                      {step.context}
+                    </p>
+                    
+                    {/* Title */}
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {step.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                    
+                    {/* Highlight Badge */}
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      {step.highlight}
+                    </Badge>
                   </CardContent>
                 </Card>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Process Flow Arrows (Desktop Only) */}
+        {/* Impact Stats */}
         <motion.div 
-          className="hidden lg:flex justify-between items-center mt-8 px-12"
-          variants={headerVariants}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4"
+          variants={containerVariants}
         >
-          {[1, 2, 3].map((arrow) => (
-            <div key={arrow} className="flex-1 flex justify-center">
-              <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-            </div>
-          ))}
+          {impactStats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="text-center p-6 bg-background rounded-xl border border-border hover:border-primary/30 transition-colors"
+              >
+                <Icon className="w-6 h-6 text-primary mx-auto mb-2" />
+                <div className="text-2xl md:text-3xl font-bold bg-gradient-hero bg-clip-text text-transparent">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </motion.section>
