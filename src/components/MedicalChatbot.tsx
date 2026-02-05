@@ -21,7 +21,7 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -33,8 +33,8 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
   }, [messages]);
 
   const scrollToBottom = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
   };
 
@@ -193,7 +193,7 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
       </CardHeader>
       
       <CardContent className="flex-1 flex flex-col p-0">
-        <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+        <ScrollArea className="flex-1 p-4">
           {messages.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
               <Brain className="h-12 w-12 mx-auto mb-4 opacity-50" />
@@ -226,6 +226,8 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
               </div>
             </div>
           )}
+          
+          <div ref={messagesEndRef} />
         </ScrollArea>
         
         <div className="border-t p-4">
