@@ -35,13 +35,13 @@ const AdvantagesSection = () => {
     {
       icon: Shield,
       title: "Sécurité & Conformité",
-      description: "Conforme RGPD et certifications médicales. Données chiffrées et sécurisées",
+      description: "Conformité RGPD en cours. Certifications et audits de sécurité en cours d'élaboration",
       color: "text-trust"
     },
     {
       icon: Award,
-      title: "Validé Cliniquement",
-      description: "Testé et validé dans plusieurs centres hospitaliers avec des résultats probants",
+      title: "Validation Clinique",
+      description: "Validation clinique en cours dans plusieurs centres hospitaliers partenaires",
       color: "text-trust"
     }
   ];
