@@ -181,8 +181,8 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
   };
 
   return (
-    <Card className="w-full h-[600px] flex flex-col shadow-xl">
-      <CardHeader className="flex flex-row items-center justify-between bg-gradient-to-r from-medical-primary to-tech-primary text-white">
+    <Card className="w-full h-[600px] flex flex-col shadow-xl overflow-hidden">
+      <CardHeader className="flex-shrink-0 flex flex-row items-center justify-between bg-gradient-to-r from-medical-primary to-tech-primary text-white">
         <div className="flex items-center gap-2">
           <Brain className="h-5 w-5" />
           <CardTitle className="text-lg">Assistant IA Médical</CardTitle>
@@ -192,45 +192,47 @@ export function MedicalChatbot({ onClose }: MedicalChatbotProps) {
         </Button>
       </CardHeader>
       
-      <CardContent className="flex-1 flex flex-col p-0">
-        <ScrollArea className="flex-1 p-4">
-          {messages.length === 0 && (
-            <div className="text-center text-muted-foreground py-8">
-              <Brain className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>Bonjour ! Je suis votre assistant IA spécialisé en imagerie médicale.</p>
-              <p className="text-sm mt-2">Posez-moi vos questions sur les tumeurs cérébrales.</p>
-            </div>
-          )}
-          
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}
-            >
+      <CardContent className="flex-1 flex flex-col p-0 overflow-hidden min-h-0">
+        <ScrollArea className="flex-1 min-h-0">
+          <div className="p-4">
+            {messages.length === 0 && (
+              <div className="text-center text-muted-foreground py-8">
+                <Brain className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <p>Bonjour ! Je suis votre assistant IA spécialisé en imagerie médicale.</p>
+                <p className="text-sm mt-2">Posez-moi vos questions sur les tumeurs cérébrales.</p>
+              </div>
+            )}
+            
+            {messages.map((message, index) => (
               <div
-                className={`inline-block max-w-[80%] p-3 rounded-lg ${
-                  message.role === 'user'
-                    ? 'bg-medical-primary text-white'
-                    : 'bg-muted'
-                }`}
+                key={index}
+                className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}
               >
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                <div
+                  className={`inline-block max-w-[80%] p-3 rounded-lg ${
+                    message.role === 'user'
+                      ? 'bg-medical-primary text-white'
+                      : 'bg-muted'
+                  }`}
+                >
+                  <p className="whitespace-pre-wrap">{message.content}</p>
+                </div>
               </div>
-            </div>
-          ))}
-          
-          {isLoading && (
-            <div className="text-left mb-4">
-              <div className="inline-block bg-muted p-3 rounded-lg">
-                <Loader2 className="h-4 w-4 animate-spin" />
+            ))}
+            
+            {isLoading && (
+              <div className="text-left mb-4">
+                <div className="inline-block bg-muted p-3 rounded-lg">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                </div>
               </div>
-            </div>
-          )}
-          
-          <div ref={messagesEndRef} />
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
         </ScrollArea>
         
-        <div className="border-t p-4">
+        <div className="flex-shrink-0 border-t p-4">
           <div className="flex gap-2">
             <Input
               value={input}
