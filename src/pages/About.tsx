@@ -7,7 +7,7 @@ import Watermark from "@/components/Watermark";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, Target, Lightbulb, Award, CheckCircle2, Clock, Rocket, ArrowRight } from "lucide-react";
+import { Users, Target, Lightbulb, CheckCircle2, Clock, Rocket, ArrowRight } from "lucide-react";
 import matthieuPhoto from "@/assets/team-matthieu-graziani.jpg";
 
 
@@ -325,16 +325,16 @@ const About = () => {
             </div>
           </AnimatedSectionWrapper>
 
-          {/* Timeline / Milestones */}
+          {/* Vision 2026-2030 */}
           <AnimatedSectionWrapper className="py-16">
             <div className="container mx-auto px-6">
               <motion.div className="text-center mb-12" variants={headerVariants}>
                 <Badge variant="secondary" className="px-4 py-2 text-sm font-medium mb-4">
-                  <Award className="w-4 h-4 inline mr-2" />
-                  Notre Parcours
+                  <Rocket className="w-4 h-4 inline mr-2" />
+                  Notre Vision 2026-2030
                 </Badge>
                 <h2 className="text-3xl font-bold text-foreground mb-4">
-                  De la Recherche à l'Impact Clinique
+                  Feuille de Route Stratégique
                 </h2>
               </motion.div>
 
