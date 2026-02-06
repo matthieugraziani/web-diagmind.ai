@@ -7,7 +7,7 @@ import Watermark from "@/components/Watermark";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, Target, Lightbulb, Award, Building2, Handshake, CheckCircle2, Clock, Rocket, ArrowRight } from "lucide-react";
+import { Users, Target, Lightbulb, Award, CheckCircle2, Clock, Rocket, ArrowRight } from "lucide-react";
 import matthieuPhoto from "@/assets/team-matthieu-graziani.jpg";
 
 
@@ -120,15 +120,6 @@ const About = () => {
     }
   ];
 
-  const partners = [
-    "AP-HP Paris",
-    "CHU de Toulon",
-    "Institut Curie",
-    "CNRS",
-    "INSERM",
-    "CEA"
-  ];
-
   const headerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -165,18 +156,6 @@ const About = () => {
     }),
   };
 
-  const statVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: (i: number) => ({
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: i * 0.1,
-        ease: "easeOut" as const,
-      },
-    }),
-  };
 
   return (
     <div className="min-h-screen relative">
@@ -429,85 +408,6 @@ const About = () => {
             </div>
           </AnimatedSectionWrapper>
 
-          {/* Partners */}
-          <AnimatedSectionWrapper className="py-16 bg-muted/20">
-            <div className="container mx-auto px-6">
-              <motion.div className="text-center mb-12" variants={headerVariants}>
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium mb-4">
-                  <Handshake className="w-4 h-4 inline mr-2" />
-                  Nos Partenaires
-                </Badge>
-                <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Un Écosystème de Confiance
-                </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Nous collaborons avec les institutions de santé et de recherche les plus prestigieuses.
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                {partners.map((partner, index) => (
-                  <motion.div
-                    key={index}
-                    custom={index}
-                    variants={cardVariants}
-                    whileHover={{ y: -5 }}
-                  >
-                    <Card className="bg-background border-border hover:shadow-medical transition-all duration-300 flex items-center justify-center p-6 h-full">
-                      <div className="text-center">
-                        <Building2 className="h-10 w-10 text-primary mx-auto mb-2" />
-                        <span className="text-sm font-medium text-foreground">{partner}</span>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSectionWrapper>
-
-          {/* R&D Section */}
-          <AnimatedSectionWrapper className="py-16">
-            <div className="container mx-auto px-6">
-              <motion.div className="text-center mb-12" variants={headerVariants}>
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium mb-4">
-                  🔬 Recherche & Développement
-                </Badge>
-                <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Innovation Continue
-                </h2>
-              </motion.div>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  { value: "12+", label: "Publications scientifiques" },
-                  { value: "5", label: "Brevets déposés" },
-                  { value: "3", label: "Projets ANR en cours" }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    custom={index}
-                    variants={statVariants}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Card className="bg-background border-border hover:shadow-medical transition-all duration-300">
-                      <CardContent className="pt-6 text-center">
-                        <motion.div 
-                          className="text-4xl font-bold text-primary mb-2"
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.2 + index * 0.1, type: "spring", stiffness: 200 }}
-                        >
-                          {stat.value}
-                        </motion.div>
-                        <div className="text-muted-foreground">{stat.label}</div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSectionWrapper>
         </main>
         <Footer />
       </div>
