@@ -33,8 +33,11 @@ const Header = () => {
             <a href="/#avantages" className="text-foreground hover:text-primary transition-colors">
               Avantages
             </a>
-            <a href="/#vision" className="text-foreground hover:text-primary transition-colors">
-              Vision
+            <a href="/#technologie" className="text-foreground hover:text-primary transition-colors">
+              Technologie
+            </a>
+            <a href="/#cybersecurite" className="text-foreground hover:text-primary transition-colors">
+              Sécurité
             </a>
             <a href="/about" className="text-foreground hover:text-primary transition-colors">
               À Propos
@@ -79,8 +82,11 @@ const Header = () => {
               <a href="/#avantages" className="text-foreground hover:text-primary transition-colors">
                 Avantages
               </a>
-              <a href="/#vision" className="text-foreground hover:text-primary transition-colors">
-                Vision
+              <a href="/#technologie" className="text-foreground hover:text-primary transition-colors">
+                Technologie
+              </a>
+              <a href="/#cybersecurite" className="text-foreground hover:text-primary transition-colors">
+                Sécurité
               </a>
               <a href="/about" className="text-foreground hover:text-primary transition-colors">
                 À Propos
