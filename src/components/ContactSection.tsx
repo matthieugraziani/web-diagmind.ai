@@ -303,7 +303,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-muted-foreground">contact@diagmind.ai</p>
+                    <p className="text-muted-foreground">matthieu.graziani007@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
