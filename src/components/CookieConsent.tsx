@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Cookie, X, Settings, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+
 import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const CookieConsent = () => {
@@ -121,12 +121,12 @@ const CookieConsent = () => {
                   <Settings className="w-4 h-4" />
                   {showDetails ? "Masquer" : "Personnaliser"}
                 </button>
-                <Link 
-                  to="/politique-confidentialite" 
+                <a 
+                  href="/politique-confidentialite" 
                   className="text-sm text-primary hover:underline ml-auto"
                 >
                   Politique de confidentialité
-                </Link>
+                </a>
               </div>
             </div>
           </div>
