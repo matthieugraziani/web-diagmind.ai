@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
                   <p>
                     <strong className="text-foreground">DiagMind.AI SAS</strong> est responsable du traitement de vos données personnelles.
                   </p>
-                  <p><strong className="text-foreground">Délégué à la Protection des Données (DPO) :</strong> dpo@diagmind.ai</p>
+                  <p><strong className="text-foreground">Délégué à la Protection des Données (DPO) :</strong> matthieu.graziani007@gmail.com</p>
                   <p><strong className="text-foreground">Adresse :</strong> 15 Rue de l'Innovation, 75013 Paris, France</p>
                 </CardContent>
               </Card>
@@ -234,7 +234,7 @@ const PrivacyPolicy = () => {
                     <li><strong className="text-foreground">Droit de retirer votre consentement :</strong> À tout moment, sans affecter la licéité du traitement antérieur</li>
                   </ul>
                   <p className="mt-4">
-                    Pour exercer vos droits, contactez notre DPO à : <strong className="text-foreground">dpo@diagmind.ai</strong>
+                    Pour exercer vos droits, contactez notre DPO à : <strong className="text-foreground">matthieu.graziani007@gmail.com</strong>
                   </p>
                   <p>
                     Vous pouvez également introduire une réclamation auprès de la <strong className="text-foreground">CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : www.cnil.fr
@@ -254,7 +254,7 @@ const PrivacyPolicy = () => {
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                   <p>Pour toute question concernant cette politique de confidentialité :</p>
-                  <p><strong className="text-foreground">Email DPO :</strong> dpo@diagmind.ai</p>
+                  <p><strong className="text-foreground">Email DPO :</strong> matthieu.graziani007@gmail.com</p>
                   <p><strong className="text-foreground">Email général :</strong> matthieu.graziani007@gmail.com</p>
                   <p><strong className="text-foreground">Adresse :</strong> DiagMind.AI SAS - 15 Rue de l'Innovation, 75013 Paris, France</p>
                   <p className="text-sm italic mt-4">

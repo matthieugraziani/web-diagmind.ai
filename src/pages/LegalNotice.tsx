@@ -64,7 +64,7 @@ const LegalNotice = () => {
                 </CardHeader>
                 <CardContent className="space-y-4 text-muted-foreground">
                   <p><strong className="text-foreground">Email :</strong> matthieu.graziani007@gmail.com</p>
-                  <p><strong className="text-foreground">Email DPO :</strong> dpo@diagmind.ai</p>
+                  <p><strong className="text-foreground">Email DPO :</strong> matthieu.graziani007@gmail.com</p>
                 </CardContent>
               </Card>
 
