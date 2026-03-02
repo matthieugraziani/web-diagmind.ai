@@ -255,7 +255,7 @@ const PrivacyPolicy = () => {
                 <CardContent className="space-y-4 text-muted-foreground">
                   <p>Pour toute question concernant cette politique de confidentialité :</p>
                   <p><strong className="text-foreground">Email DPO :</strong> dpo@diagmind.ai</p>
-                  <p><strong className="text-foreground">Email général :</strong> contact@diagmind.ai</p>
+                  <p><strong className="text-foreground">Email général :</strong> matthieu.graziani007@gmail.com</p>
                   <p><strong className="text-foreground">Adresse :</strong> DiagMind.AI SAS - 15 Rue de l'Innovation, 75013 Paris, France</p>
                   <p className="text-sm italic mt-4">
                     <strong className="text-foreground">Dernière mise à jour :</strong> Décembre 2024
