@@ -111,7 +111,7 @@ const HeroSection = () => {
               </div>
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <motion.div 
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
@@ -119,24 +119,18 @@ const HeroSection = () => {
               <Button 
                 variant="medical" 
                 size="lg" 
-                className="shadow-hero"
+                className="shadow-hero text-lg px-8 py-6"
                 asChild
               >
                 <a href="https://calendly.com/matthieu-graziani007" target="_blank" rel="noopener noreferrer">
                   <Calendar className="h-5 w-5" />
-                  Réserver une Démo
+                  Réserver une Démo Gratuite
                 </a>
               </Button>
-              <Button 
-                variant="medical-outline" 
-                size="lg"
-                onClick={() => {
-                  document.getElementById('technologie')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Découvrir la Technologie
-              </Button>
             </motion.div>
+            <motion.p variants={itemVariants} className="text-sm text-muted-foreground">
+              ✓ 30 min · ✓ Sans engagement · ✓ Présentation personnalisée
+            </motion.p>
 
             {/* Trust Indicators */}
             <motion.div 
