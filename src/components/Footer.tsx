@@ -56,7 +56,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Linkedin className="h-4 w-4" />
-                <a href="#" className="hover:text-background transition-colors">LinkedIn Fondateur</a>
+                <a href="https://www.linkedin.com/in/matthieu-graziani-4190b526b" target="_blank" rel="noopener noreferrer" className="hover:text-background transition-colors">LinkedIn Fondateur</a>
               </div>
               <div className="flex items-center space-x-2">
                 <Twitter className="h-4 w-4" />
