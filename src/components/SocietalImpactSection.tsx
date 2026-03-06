@@ -56,7 +56,7 @@ const SocietalImpactSection = () => {
       before: "50",
       after: "300",
       label: "Clichés analysés/jour",
-      description: "Multipliez votre capacité diagnostique"
+      description: "Multipliez votre capacité de diagnostique"
     },
     {
       icon: Building2,
