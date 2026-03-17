@@ -12,6 +12,7 @@ import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Careers from "./pages/Careers";
+import PacsViewer from "./pages/PacsViewer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
