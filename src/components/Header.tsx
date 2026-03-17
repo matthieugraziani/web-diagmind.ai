@@ -73,6 +73,9 @@ const Header = () => {
               <a href="/#contact" className="text-foreground hover:text-primary transition-colors">
                 Contact
               </a>
+              <a href="/visionneuse-pacs" className="text-foreground hover:text-primary transition-colors font-semibold">
+                Visionneuse PACS
+              </a>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="medical" size="sm" asChild>
                   <a href="https://calendly.com/matthieu-graziani007" target="_blank" rel="noopener noreferrer">Réserver une Démo</a>
