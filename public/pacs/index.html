@@ -1,0 +1,199 @@
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#04080e">
+  <title>Visionneuse PACS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- LEFT SIDEBAR -->
+<aside id="leftSidebar">
+  <button class="sidebar-collapse-btn left" id="collapseLeft" onclick="toggleSidebar('left')" title="Masquer la sidebar">‹</button>
+  <!-- Titre -->
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">⊕</div>
+    <span>Visionneuse PACS</span>
+  </div>
+  <!-- Zone import — toujours visible -->
+  <div class="sidebar-section" style="padding-bottom:8px;flex-shrink:0">
+    <div class="dicom-upload-zone" id="dicomDropZone"
+         onclick="document.getElementById('dicomFileInput').click()"
+         ondragover="handleDragOver(event)"
+         ondragleave="handleDragLeave(event)"
+         ondrop="handleDrop(event)">
+      <input type="file" id="dicomFileInput" multiple accept=".dcm,.dicom,*" webkitdirectory style="display:none" onchange="handleDicomFiles(this.files)">
+      <div id="dicomUploadIdle">
+        <div class="dicom-upload-icon">⊕</div>
+        <div class="dicom-upload-title">Importer DICOM</div>
+        <div class="dicom-upload-hint">Glisser un dossier ou cliquer</div>
+        <div class="dicom-upload-formats">.DCM · .DICOM · Dossier</div>
+      </div>
+      <div id="dicomUploadProgress" style="display:none">
+        <div class="dicom-progress-ring">
+          <svg viewBox="0 0 36 36" width="40" height="40">
+            <circle cx="18" cy="18" r="15" fill="none" stroke="var(--border)" stroke-width="3"/>
+            <circle id="dicomProgressArc" cx="18" cy="18" r="15" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-dasharray="94" stroke-dashoffset="94" style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 0.3s ease"/>
+          </svg>
+          <div class="dicom-progress-pct" id="dicomProgressPct">0%</div>
+        </div>
+        <div class="dicom-progress-label" id="dicomProgressLabel">Lecture des fichiers…</div>
+      </div>
+      <!-- État done : plus compact, reste cliquable pour changer -->
+      <div id="dicomUploadDone" style="display:none">
+        <div class="dicom-done-row">
+          <div class="dicom-done-check">✓</div>
+          <div>
+            <div class="dicom-done-name" id="dicomDoneName"></div>
+            <div class="dicom-done-meta" id="dicomDoneMeta"></div>
+          </div>
+          <div class="dicom-done-reload" title="Changer de dossier">⟳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Liste de travail : carte patient + 4 séries -->
+  <div class="sidebar-label" style="padding: 8px 14px 4px;flex-shrink:0">Liste de travail</div>
+  <div class="worklist" id="worklist">
+    <!-- État vide -->
+    <div id="wlEmpty" class="wl-empty-state">
+      <div class="wl-empty-icon">⊕</div>
+      <div class="wl-empty-text">Aucun patient chargé</div>
+    </div>
+  </div>
+
+  <!-- Cliché actif — bas de la sidebar -->
+  <div id="sideSliceBlock" style="display:none;flex-shrink:0;border-top:1px solid var(--border);padding:10px 10px 12px;">
+    <div class="sidebar-label" style="padding:0 0 6px;font-size:8px">Cliché actif</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+      <span id="sideSliceSeries" style="font-family:var(--mono);font-size:9px;color:var(--accent);background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.2);border-radius:3px;padding:1px 6px"></span>
+    </div>
+    <div id="sideSliceDetails" style="font-size:11px;line-height:1.7;"></div>
+  </div>
+</aside>
+
+<!-- MAIN VIEWER -->
+<main>
+  <div class="viewer-toolbar">
+    <button class="tool-btn active" data-tool="select" title="Sélection">↖</button>
+    <button class="tool-btn" data-tool="zoom" title="Zoom">🔍</button>
+    <button class="tool-btn" data-tool="pan" title="Déplacement">✋</button>
+    <button class="tool-btn" data-tool="wl" title="Fenêtrage WL/WW">☀</button>
+    <div class="tool-sep"></div>
+    <button class="tool-btn" data-tool="ruler" title="Mesure linéaire">📏</button>
+    <button class="tool-btn" data-tool="angle" title="Mesure d'angle">∠</button>
+    <button class="tool-btn" data-tool="roi" title="ROI Rectangle">⬜</button>
+    <div class="tool-sep"></div>
+    <button class="tool-btn" data-tool="rotate" title="Rotation 90°">↻</button>
+    <button class="tool-btn" data-tool="invert" title="Inverser">◑</button>
+    <div class="tool-sep"></div>
+    <span class="tool-label" id="toolLabelMain" style="color:rgba(0,200,255,0.3)">Aucune étude chargée</span>
+    <div class="tool-sep"></div>
+    <button class="tool-btn active">⊞</button>
+    <div style="margin-left:auto;display:flex;gap:6px;align-items:center">
+      <button class="btn-3d-patient" id="btn3dPatient" onclick="open3DPatientView()" title="Vue 3D — tous les clichés">
+        ⬡ 3D Patient
+      </button>
+    </div>
+  </div>
+
+  <div class="viewer-area" id="viewerArea">
+  </div>
+  </div>
+</main>
+
+<!-- RIGHT PANEL -->
+<div class="right-panel" id="rightPanel">
+  <button class="sidebar-collapse-btn right" id="collapseRight" onclick="toggleSidebar('right')" title="Masquer le panneau">›</button>
+  <div class="rpanel-tabs">
+    <div class="rptab active" onclick="switchTab('report', this)">Rapport</div>
+  </div>
+  <!-- RAPPORT TAB -->
+  <div class="rpanel-body" id="tab-report">
+    <div class="info-block-title" style="margin-bottom:12px">Compte-rendu radiologique</div>
+    <textarea id="reportText" style="width:100%;height:320px;background:var(--panel2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;font-family:var(--sans);padding:10px;resize:none;outline:none;line-height:1.6" placeholder="Compte-rendu radiologique…"></textarea>
+    <div style="margin-top:8px;display:flex;gap:6px">
+      <button class="action-btn primary" style="flex:1">✓ Valider</button>
+      <button class="action-btn" style="flex:1">📤 Envoyer</button>
+    </div>
+  </div>
+
+  <!-- VUE 3D PATIENT -->
+  <div class="rpanel-body hidden" id="tab-vol3d" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+
+    <!-- En-tête avec sélecteur de séquence -->
+    <div class="v3dp-header">
+      <div class="v3dp-title">◈ <span id="v3dpSeriesName">—</span></div>
+      <div class="v3dp-seqbtns" id="v3dpSeqBtns"></div>
+    </div>
+
+    <!-- Canvas Three.js -->
+    <div class="v3dp-canvas-wrap" id="v3dpWrap">
+      <div class="v3dp-empty" id="v3dpEmpty">
+        <div class="v3dp-empty-icon">◈</div>
+        <div class="v3dp-empty-text">Chargez un dossier DICOM<br>pour afficher le volume 3D</div>
+      </div>
+    </div>
+
+    <!-- Barre de contrôle -->
+    <div class="v3dp-controls" id="v3dpControls" style="display:none">
+      <div class="v3dp-mode-row">
+        <button class="v3dp-mode active" id="v3dpMIP"  onclick="setPanel3DMode('MIP')">MIP</button>
+        <button class="v3dp-mode"        id="v3dpDVR"  onclick="setPanel3DMode('DVR')">Volume</button>
+        <button class="v3dp-mode"        id="v3dpSLAB" onclick="setPanel3DMode('SLAB')">Coupes</button>
+        <button class="v3dp-mode v3dp-reset" onclick="resetPanel3DCamera()">⟳</button>
+        <button class="v3dp-mode v3dp-spin" id="v3dpSpinBtn" onclick="togglePanel3DSpin()">▶</button>
+      </div>
+      <div class="v3dp-sl-row">
+        <label class="v3dp-sl-label">Seuil
+          <input type="range" min="0" max="255" value="20" class="v3dp-slider" id="v3dpThresh"
+            oninput="updatePanel3DParam('thresh', this.value)">
+        </label>
+        <label class="v3dp-sl-label">Opacité
+          <input type="range" min="1" max="100" value="65" class="v3dp-slider" id="v3dpAlpha"
+            oninput="updatePanel3DParam('alpha', this.value)">
+        </label>
+        <label class="v3dp-sl-label">Vitesse
+          <input type="range" min="1" max="40" value="8" class="v3dp-slider" id="v3dpSpinSpd"
+            oninput="updatePanel3DParam('spinSpeed', this.value)">
+        </label>
+      </div>
+      <div class="v3dp-stat" id="v3dpStat"></div>
+    </div>
+
+  </div>
+
+  <div class="thumb-strip" id="thumbStrip"></div>
+</div>
+
+<!-- BOUTONS RESTORE colonnes (visibles quand sidebar/panel masqué) -->
+<button class="sidebar-restore-btn left-restore"  onclick="toggleSidebar('left')"  title="Afficher la sidebar">›</button>
+<button class="sidebar-restore-btn right-restore" onclick="toggleSidebar('right')" title="Afficher le panneau">‹</button>
+
+<!-- MOBILE NAV BAR (caché sur desktop via CSS) -->
+<nav class="mobile-nav-bar" id="mobileNavBar">
+  <button class="mob-nav-btn active" id="mnbViewer" onclick="mobileNav('viewer', this)">
+    <span>⊡</span>
+    <span class="mob-nav-label">Viewer</span>
+  </button>
+  <button class="mob-nav-btn" id="mnbWorklist" onclick="mobileNav('worklist', this)">
+    <span>☰</span>
+    <span class="mob-nav-label">Worklist</span>
+    <span class="mob-nav-badge" id="mnbWlBadge" style="display:none"></span>
+  </button>
+  <button class="mob-nav-btn" id="mnbPanel" onclick="mobileNav('panel', this)">
+    <span>◈</span>
+    <span class="mob-nav-label">Info</span>
+  </button>
+</nav>
+
+<!-- DOTS navigation panneaux mobile -->
+<div class="mobile-panel-dots" id="mobilePanelDots"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

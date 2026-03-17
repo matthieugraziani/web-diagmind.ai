@@ -12,6 +12,7 @@ import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Careers from "./pages/Careers";
+import PacsViewer from "./pages/PacsViewer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
             <Route path="/conditions-utilisation" element={<TermsOfService />} />
             <Route path="/carrieres" element={<Careers />} />
+            <Route path="/visionneuse-pacs" element={<PacsViewer />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
