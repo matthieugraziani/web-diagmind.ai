@@ -36,6 +36,9 @@ const Header = () => {
             <a href="/#contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </a>
+            <a href="/visionneuse-pacs" className="text-foreground hover:text-primary transition-colors font-semibold">
+              Visionneuse PACS
+            </a>
           </nav>
 
           {/* CTA Button */}
